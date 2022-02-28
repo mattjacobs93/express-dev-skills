@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
   <h1>Skills</h1>
@@ -13,8 +14,17 @@
   <% } %>
   <ul>
     <% skills.forEach( skill => { %>
-      <li><a href="/skills/<%=skill._id%>"> <%= skill.name + ': ' + skill.notes %> </a></li>
+      <li>
+        <form action="/skills/<%= skill._id%>?_method=DELETE" 
+          class="delete-form"
+          method="POST"
+          >
+        <button type="submit">X</button>
+        </form>
+        <a href="/skills/<%=skill._id%>"> <%= skill.name + ': ' + skill.notes %> </a>
+      </li>
     <% }) %>
   </ul>
+  <a href="/skills/new">Add skill</a>
 </body>
 </html>

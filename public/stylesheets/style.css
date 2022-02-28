@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* note: I hand-coded the below css using the following as a guide/template as per instructions: https://www.notion.so/seiremote/Express-Middleware-a1ee2c6825f945a09e87d78d6318a0de */
+
+.delete-form {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.delete-form button {
+  color: red;
+}
+
+li {
+  list-style: none;
+}

@@ -7,7 +7,7 @@ const skills = [
 ]
 
 
-//as per instructions, I coded the below functions by hand using the find function from https://www.notion.so/seiremote/Express-Routers-Controllers-d1d13d2ef3fc4b77b42e00e0821ce4ad as a guide:
+//as per instructions, I coded the below functions by hand using the find function from https://www.notion.so/seiremote/Express-Routers-Controllers-d1d13d2ef3fc4b77b42e00e0821ce4ad and https://www.notion.so/seiremote/Express-Middleware-a1ee2c6825f945a09e87d78d6318a0de as a guide:
 
 const find = (conditions, callback) => {
   try {
@@ -34,9 +34,28 @@ const findById = (id, callback) => {
 
 }
 
+const create = (skill, callback) => {
+  skill._id = skills.length
+  skills.push(skill)
 
+  return callback(null, skill)
+}
+
+
+const findByIdAndDelete = (id, callback) => {
+  try {
+    const idx = skills.findIndex(skill => skill._id === parseInt(id))
+    const deletedSkill = skills.splice(idx,1)
+    if (!deletedSkill.length) throw new Error ('No skill was deleted')
+    return callback(null, deletedSkill[0]) 
+  } catch (error) {
+    return callback(error,null)
+  }
+}
 
 export {
   find,
   findById,
+  create,
+  findByIdAndDelete
 }
