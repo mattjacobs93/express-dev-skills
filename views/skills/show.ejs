@@ -15,6 +15,12 @@
     <h2>Skill #<%=skill._id%></h2>
     <h3><%=skill.name + ': ' + skill.notes %></h3>
   <% } %>
+  
+  <form action="/skills/<%=skill._id%>?_method=DELETE" method="POST">
+    <button type="submit">Delete Skill</button>
+  </form>
+  
   <a href="/skills">Go back</a>
+ 
 </body>
 </html>
